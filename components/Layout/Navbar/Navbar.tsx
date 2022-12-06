@@ -1,6 +1,11 @@
-import { Box, Flex, Image, Link } from '@chakra-ui/react'
+import { Box, Flex, Icon, IconButton, Image, Link } from '@chakra-ui/react'
 import { NAV_ITEMS } from 'data/NavItemData'
 import NavItem from './NavItem'
+import {
+  RiNotification2Line,
+  RiSearchLine,
+  RiShoppingCartLine,
+} from 'react-icons/ri'
 
 const Navbar = () => {
   return (
@@ -25,7 +30,17 @@ const Navbar = () => {
           />
         ))}
       </Flex>
-      <Flex>&nbsp;</Flex>
+      <Flex gap="2">
+        <IconButton aria-label="Search" variant="unstyled">
+          <Icon as={RiSearchLine} />
+        </IconButton>
+        <IconButton aria-label="Cart" variant="unstyled">
+          <Icon as={RiShoppingCartLine} />
+        </IconButton>
+        <IconButton aria-label="Notifications" variant="unstyled">
+          <Icon as={RiNotification2Line} />
+        </IconButton>
+      </Flex>
     </Flex>
   )
 }
