@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <Flex
       w="full"
-      h="100px"
+      h="90px"
       alignItems="center"
       justifyContent="space-between"
       px={{ base: 5, md: 3, lg: 8 }}
