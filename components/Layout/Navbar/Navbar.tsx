@@ -32,13 +32,13 @@ const Navbar = () => {
       </Flex>
       <Flex gap="2">
         <IconButton aria-label="Search" variant="unstyled">
-          <Icon as={RiSearchLine} />
+          <Icon w={5} h={5} as={RiSearchLine} />
         </IconButton>
         <IconButton aria-label="Cart" variant="unstyled">
-          <Icon as={RiShoppingCartLine} />
+          <Icon w={5} h={5} as={RiShoppingCartLine} />
         </IconButton>
         <IconButton aria-label="Notifications" variant="unstyled">
-          <Icon as={RiNotification2Line} />
+          <Icon w={5} h={5} as={RiNotification2Line} />
         </IconButton>
       </Flex>
     </Flex>
