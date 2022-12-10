@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Flex, Image } from '@chakra-ui/react'
+import { Box, Flex, Image, SimpleGrid } from '@chakra-ui/react'
 
 export type FeaturedCardProps = {
   id: number
@@ -22,22 +22,22 @@ const FeaturedCard = (props: FeaturedCardProps) => {
   } = props
 
   return (
-    <Flex borderTop="1px solid" borderColor="#333333">
+    <Flex borderTop="1px solid" borderColor="#333333" pt="14">
       {placeImageRight && (
-        <Flex>
+        <SimpleGrid templateColumns="repeat(2, 1fr)" gap="10">
           <Box></Box>
           <Box>
             <Image src={image} alt={title} />
           </Box>
-        </Flex>
+        </SimpleGrid>
       )}
       {!placeImageRight && (
-        <Flex>
+        <SimpleGrid templateColumns="repeat(2, 1fr)" gap="10">
           <Box>
             <Image src={image} alt={title} />
           </Box>
           <Box></Box>
-        </Flex>
+        </SimpleGrid>
       )}
     </Flex>
   )
