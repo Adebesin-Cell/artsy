@@ -15,7 +15,15 @@ const Events = () => {
         px={{ base: 3, lg: 10 }}
         maxW={{ base: 'full', xl: '1280px' }}
       >
-        <Heading fontFamily="Satoshi" color="white" fontWeight={500}>
+        <Heading
+          fontFamily="Satoshi"
+          color="white"
+          fontWeight={500}
+          w="max-content"
+          pb="4"
+          borderBottom="0.8px solid"
+          borderColor="white"
+        >
           See Upcoming Auctions and Exhibitions
         </Heading>
       </Box>

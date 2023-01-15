@@ -2,7 +2,14 @@ import { Flex, Image } from '@chakra-ui/react'
 
 const Slider = () => {
   return (
-    <Flex mt="20" gap="5" overflowX="hidden">
+    <Flex
+      mt="20"
+      gap="5"
+      overflowX="hidden"
+      maxW={{ '2xl': '1350px' }}
+      mx="auto"
+      justifyContent={{ '2xl': 'center' }}
+    >
       <Image
         mt="28"
         src="./images/slide--1.png"
