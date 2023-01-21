@@ -184,7 +184,7 @@ function Marketplace() {
         >
           {M_Products.map(prod => {
             return (
-              <Box className={style.third}>
+              <Box key={prod.id} className={style.third}>
                 <Image
                   height="70%"
                   borderRadius="7px"

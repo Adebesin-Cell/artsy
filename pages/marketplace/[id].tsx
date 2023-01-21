@@ -154,7 +154,12 @@ function checkout(product: ProductItemProps) {
       >
         {FEATURED_PRODUCTS.map(prod => {
           return (
-            <Box height="15rem" minWidth="15rem" border="1px solid grey">
+            <Box
+              key={prod.id}
+              height="15rem"
+              minWidth="15rem"
+              border="1px solid grey"
+            >
               {prod.title}
 
               <Image height="80%" src={'.' + prod.image} alt="" />
