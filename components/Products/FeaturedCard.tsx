@@ -12,6 +12,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { RiArrowRightLine } from 'react-icons/ri'
+import Link from 'next/link'
 
 export type FeaturedCardProps = {
   id: number
@@ -25,6 +26,7 @@ export type FeaturedCardProps = {
 
 const FeaturedCard = (props: FeaturedCardProps) => {
   const {
+    id,
     image,
     title,
     description,
@@ -111,20 +113,22 @@ const FeaturedCard = (props: FeaturedCardProps) => {
                 </AvatarGroup>
                 <Text>{totalCreators} major creators</Text>
               </Flex>
-              <IconButton
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                aria-label="Notifications"
-                variant="unstyled"
-                w="16"
-                h="16"
-                border="0.5px solid"
-                borderColor="#333333"
-                borderRadius="full"
-              >
-                <Icon as={RiArrowRightLine} w={10} h={6} />
-              </IconButton>
+              <Link href={'/marketplace/' + Number(id)}>
+                <IconButton
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  aria-label="Notifications"
+                  variant="unstyled"
+                  w="16"
+                  h="16"
+                  border="0.5px solid"
+                  borderColor="#333333"
+                  borderRadius="full"
+                >
+                  <Icon as={RiArrowRightLine} w={10} h={6} />
+                </IconButton>
+              </Link>
             </Flex>
           </Box>
         </SimpleGrid>
