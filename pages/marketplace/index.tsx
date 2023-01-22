@@ -53,7 +53,7 @@ function Marketplace() {
       <Flex
         margin="auto"
         // border="1px solid grey"
-        width="80%"
+        width="75%"
         height="7rem"
         paddingTop="2rem"
         marginBottom="0"
@@ -65,17 +65,91 @@ function Marketplace() {
           textAlign="center"
           paddingTop="0.5rem"
         >
-          <Input placeholder="large size" size="lg" width="10rem" />
+          <Input
+            border="0"
+            focusBorderColor="none"
+            placeholder="Search"
+            size="lg"
+            height="2.7rem"
+            width="10rem"
+            borderRadius="15px"
+            color="white"
+            backgroundColor="#F0F0F0"
+          />
         </Box>
-        <Box width="80%" h="90%">
-          <Box
+        <SimpleGrid
+          width="80%"
+          h="90%"
+          // border="1px solid grey"
+          spacing="5px"
+          templateColumns="repeat(1, 1fr)"
+          // marginLeft="2rem"
+          // gap="10rem"
+          paddingLeft="6rem"
+          paddingRight="6rem"
+        >
+          <Flex
             className={style.shadow}
-            width="88%"
+            width="100%"
             h="100%"
-            // border="1px solid grey"
-            marginLeft="2rem"
-          ></Box>
-        </Box>
+            // margin="auto"
+
+            // paddingTop="9px"
+            // marginLeft="2rem"
+          >
+            <Text
+              fontWeight="Normal"
+              fontSize="1.2rem"
+              margin="auto"
+              marginLeft="2rem"
+            >
+              See 1-6 of 15 results
+            </Text>
+            <Box
+              w="9rem"
+              h="80%"
+              marginRight="0.6rem"
+              padding="1"
+              border="1px solid #A0A0A0"
+              borderRadius="0.4rem"
+            >
+              <Accordion allowToggle height="100%">
+                <AccordionItem height="100%" border="none">
+                  <h2>
+                    <AccordionButton
+                      backgroundColor="inherit"
+                      p="1"
+                      paddingLeft="25%"
+                      // marginTop="2rem"
+                      height="100%"
+                      // border="1px solid black"
+                      // m="1.5"
+                      borderRadius="0.5rem"
+                      // alignItems="center"
+                    >
+                      <Text
+                        as="span"
+                        fontWeight="Bold"
+                        fontSize="1.3rem"
+                        fontFamily="Calibri"
+                        // border="1px solid grey"
+                        // margin="auto"
+                      >
+                        Sort by
+                      </Text>
+                      <AccordionIcon />
+                    </AccordionButton>
+                  </h2>
+                  <AccordionPanel
+                    pb={4}
+                    p="0"
+                    marginTop="2rem"
+                  ></AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            </Box>
+          </Flex>
+        </SimpleGrid>
       </Flex>
       <Flex
         margin="auto"
@@ -83,7 +157,7 @@ function Marketplace() {
         // padding="20"
         // overflow="scroll"
         // border="1px solid grey"
-        width="80%"
+        width="75%"
       >
         <Box w="20%" p={4} color="black">
           <Flex
@@ -91,48 +165,103 @@ function Marketplace() {
             w="100%"
             h="3.5rem"
             color="black"
-            borderBottom="4px solid grey"
+            borderBottom="5px solid #7f993c"
           >
-            <Image height="70%" src="./images/filter.svg" alt="Artsy" />
-            <Text fontSize="1.5rem">Filter</Text>
+            <Image height="70%" src="./images/filter2.svg" alt="Artsy" />
+            <Text fontSize="1.5rem" fontWeight="Bold" fontFamily="Calibri">
+              Filter
+            </Text>
           </Flex>
 
-          <Box w="98%" h="59rem" p={2} color="black">
+          <Box w="98%" h="59rem" color="black">
             <Box w="100%" h="32%">
               <Accordion allowToggle height="100%">
-                <AccordionItem height="100%">
-                  <h2>
-                    <AccordionButton>
-                      <Box as="span" flex="1" textAlign="left">
+                <AccordionItem height="100%" border="none">
+                  <h1>
+                    <AccordionButton
+                      backgroundColor="inherit"
+                      p="0"
+                      marginTop="2rem"
+                      height="2rem"
+                    >
+                      <Box
+                        as="span"
+                        flex="1"
+                        textAlign="left"
+                        fontWeight="Bold"
+                        fontSize="1.3rem"
+                        fontFamily="Calibri"
+                      >
                         By Category
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
-                  </h2>
-                  <AccordionPanel pb={4}>
+                  </h1>
+                  <AccordionPanel p="0" marginTop="1.5rem">
                     <ul style={{ listStyle: 'none' }}>
+                      <li>
+                        <Checkbox
+                          value="editorial"
+                          onChange={e => doFilter(e.target)}
+                          marginBottom="1rem"
+                          iconColor="black"
+                          colorScheme="none"
+                        >
+                          <Text fontWeight="Normal" fontSize="1.2rem">
+                            Editorial
+                          </Text>
+                        </Checkbox>
+                      </li>
+                      <li>
+                        <Checkbox
+                          value="optics"
+                          onChange={e => doFilter(e.target)}
+                          marginBottom="1rem"
+                          iconColor="black"
+                          colorScheme="none"
+                        >
+                          <Text fontWeight="Normal" fontSize="1.2rem">
+                            Optics
+                          </Text>
+                        </Checkbox>
+                      </li>
                       <li>
                         <Checkbox
                           value="fashion"
                           onChange={e => doFilter(e.target)}
+                          marginBottom="1rem"
+                          iconColor="black"
+                          colorScheme="none"
                         >
-                          Fashion
+                          <Text fontWeight="Normal" fontSize="1.2rem">
+                            Fashion
+                          </Text>
                         </Checkbox>
                       </li>
                       <li>
                         <Checkbox
                           value="art"
                           onChange={e => doFilter(e.target)}
+                          marginBottom="1rem"
+                          iconColor="black"
+                          colorScheme="none"
                         >
-                          Art
+                          <Text fontWeight="Normal" fontSize="1.2rem">
+                            Art
+                          </Text>
                         </Checkbox>
                       </li>
                       <li>
                         <Checkbox
                           value="nature"
                           onChange={e => doFilter(e.target)}
+                          marginBottom="1rem"
+                          iconColor="black"
+                          colorScheme="none"
                         >
-                          Nature
+                          <Text fontWeight="Normal" fontSize="1.2rem">
+                            Nature
+                          </Text>
                         </Checkbox>
                       </li>
                     </ul>
@@ -142,17 +271,31 @@ function Marketplace() {
             </Box>
             <Box w="100%" h="30%">
               <Accordion allowToggle height="100%">
-                <AccordionItem height="100%">
+                <AccordionItem height="100%" border="none">
                   <h2>
-                    <AccordionButton>
-                      <Box as="span" flex="1" textAlign="left">
+                    <AccordionButton
+                      backgroundColor="inherit"
+                      p="0"
+                      marginTop="2rem"
+                      height="2rem"
+                    >
+                      <Box
+                        as="span"
+                        flex="1"
+                        textAlign="left"
+                        fontWeight="Bold"
+                        fontSize="1.3rem"
+                        fontFamily="Calibri"
+                      >
                         By Price
                       </Box>
                       <AccordionIcon />
                     </AccordionButton>
                   </h2>
-                  <AccordionPanel pb={4}>
-                    <Text>$100.00-$150.00</Text>
+                  <AccordionPanel pb={4} p="0" marginTop="2rem">
+                    <Text fontWeight="Normal" fontSize="1.2rem">
+                      $100.00-$150.00
+                    </Text>
                     <Slider
                       aria-label="slider-ex-2"
                       colorScheme="pink"
@@ -173,14 +316,18 @@ function Marketplace() {
           </Box>
         </Box>
         <SimpleGrid
-          columns={[2, null, 3]}
+          templateColumns="repeat(3, 1fr)"
+          // columns={[2, null, 3]}
           float="right"
           spacing="30px"
           w="80%"
           height="100%"
           // border="1px solid grey"
           // overflow="scroll"
-          padding="10"
+          paddingLeft="6rem"
+          paddingRight="6rem"
+          // paddingTop="5rem"
+          marginTop="2rem"
         >
           {M_Products.map(prod => {
             return (
@@ -190,8 +337,15 @@ function Marketplace() {
                   borderRadius="7px"
                   src={prod.image}
                   alt=""
+                  margin="3"
+                  width="90%"
                 />
-                {prod.title}
+                <Box margin="5">
+                  <Text>{prod.title}</Text>
+                  <Text fontWeight="bold" fontSize="1.5rem">
+                    {prod.price}
+                  </Text>
+                </Box>
               </Box>
             )
           })}
