@@ -21,7 +21,8 @@ import {
 import { FEATURED_PRODUCTS } from 'data/FeaturedProducts'
 import Link from 'next/link'
 import style from '../../styles/Home.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import FeaturedProducts from 'components/Landing/Products'
 
 // let M_Products = FEATURED_PRODUCTS
 export type FeaturedProduct = {
@@ -39,13 +40,40 @@ export type valueT = {
   value: string
 }
 function Marketplace() {
-  //trying to do filter here and return filteres array after a category is
-  //Usestate seem no to be working for type script
-  let M_Products = FEATURED_PRODUCTS
-  const doFilter = function (value: valueT) {
-    console.log(value)
-    M_Products = FEATURED_PRODUCTS.filter(el => el.category)
-    console.log(M_Products)
+  const [mktProducts, setmktProducts] = useState([{}])
+  const [checkedItems, setcheckedItems] = useState([''])
+  const [filteredProduct, setfilteredProduct] = useState([{}])
+
+  // This hook sets products on page load
+  useEffect(() => {
+    setmktProducts(FEATURED_PRODUCTS)
+    setcheckedItems([])
+    // setfilteredProduct([])
+  }, [])
+
+  //function to filter marketplace based on checked item
+  const doFilter = function (value: string) {
+    if (!checkedItems.includes(value)) {
+      checkedItems.push(value)
+    } else {
+      const ind = checkedItems.indexOf(value)
+      console.log(ind)
+      checkedItems.splice(ind, 1)
+    }
+
+    console.log(checkedItems)
+    console.log(checkedItems.length)
+    if (checkedItems.length < 1) {
+      setmktProducts(FEATURED_PRODUCTS)
+    } else {
+      setfilteredProduct([])
+      checkedItems.forEach(item => {
+        const M_Products = FEATURED_PRODUCTS.filter(el => el.category === item)
+        console.log(M_Products)
+        filteredProduct.push(...M_Products)
+      })
+      setmktProducts(filteredProduct)
+    }
   }
 
   return (
@@ -202,7 +230,7 @@ function Marketplace() {
                       <li>
                         <Checkbox
                           value="editorial"
-                          onChange={e => doFilter(e.target)}
+                          onChange={e => doFilter(e.target.value)}
                           marginBottom="1rem"
                           iconColor="black"
                           colorScheme="none"
@@ -215,7 +243,7 @@ function Marketplace() {
                       <li>
                         <Checkbox
                           value="optics"
-                          onChange={e => doFilter(e.target)}
+                          onChange={e => doFilter(e.target.value)}
                           marginBottom="1rem"
                           iconColor="black"
                           colorScheme="none"
@@ -228,7 +256,7 @@ function Marketplace() {
                       <li>
                         <Checkbox
                           value="fashion"
-                          onChange={e => doFilter(e.target)}
+                          onChange={e => doFilter(e.target.value)}
                           marginBottom="1rem"
                           iconColor="black"
                           colorScheme="none"
@@ -241,7 +269,7 @@ function Marketplace() {
                       <li>
                         <Checkbox
                           value="art"
-                          onChange={e => doFilter(e.target)}
+                          onChange={e => doFilter(e.target.value)}
                           marginBottom="1rem"
                           iconColor="black"
                           colorScheme="none"
@@ -254,7 +282,7 @@ function Marketplace() {
                       <li>
                         <Checkbox
                           value="nature"
-                          onChange={e => doFilter(e.target)}
+                          onChange={e => doFilter(e.target.value)}
                           marginBottom="1rem"
                           iconColor="black"
                           colorScheme="none"
@@ -329,7 +357,7 @@ function Marketplace() {
           // paddingTop="5rem"
           marginTop="2rem"
         >
-          {M_Products.map(prod => {
+          {mktProducts.map(prod => {
             return (
               <Box key={prod.id} className={style.third}>
                 <Image
