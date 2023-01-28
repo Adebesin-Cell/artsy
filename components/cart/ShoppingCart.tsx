@@ -47,7 +47,7 @@ function ShoppingCart() {
   return (
     <Box mt="3rem">
       <Flex width="100%" h="1px">
-        <Box width="37%" borderTop="1px solid grey"></Box>
+        <Box width="37%" borderTop="1px solid #D0D0D0"></Box>
         <Box width="50%"></Box>
       </Flex>
       <SimpleGrid
