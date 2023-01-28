@@ -29,6 +29,7 @@ export type FeaturedProduct = {
   id: number
   image: string
   title: string
+  price: string
   category: string
   description: string
   creators: { id: number; image: string }[]
@@ -40,9 +41,9 @@ export type valueT = {
   value: string
 }
 function Marketplace() {
-  const [mktProducts, setmktProducts] = useState([{}])
+  const [mktProducts, setmktProducts] = useState<FeaturedProduct[] | null>(null)
   const [checkedItems, setcheckedItems] = useState([''])
-  const [filteredProduct, setfilteredProduct] = useState([{}])
+  const filteredProduct: FeaturedProduct[] = []
 
   // This hook sets products on page load
   useEffect(() => {
@@ -57,21 +58,22 @@ function Marketplace() {
       checkedItems.push(value)
     } else {
       const ind = checkedItems.indexOf(value)
-      console.log(ind)
       checkedItems.splice(ind, 1)
     }
 
-    console.log(checkedItems)
-    console.log(checkedItems.length)
+    // console.log(checkedItems)
+    // console.log(checkedItems.length)
     if (checkedItems.length < 1) {
       setmktProducts(FEATURED_PRODUCTS)
     } else {
-      setfilteredProduct([])
+      // setfilteredProduct([])
       checkedItems.forEach(item => {
         const M_Products = FEATURED_PRODUCTS.filter(el => el.category === item)
-        console.log(M_Products)
+
         filteredProduct.push(...M_Products)
+        console.log(filteredProduct)
       })
+      console.log(filteredProduct)
       setmktProducts(filteredProduct)
     }
   }
@@ -357,26 +359,29 @@ function Marketplace() {
           // paddingTop="5rem"
           marginTop="2rem"
         >
-          {mktProducts.map(prod => {
-            return (
-              <Box key={prod.id} className={style.third}>
-                <Image
-                  height="70%"
-                  borderRadius="7px"
-                  src={prod.image}
-                  alt=""
-                  margin="3"
-                  width="90%"
-                />
-                <Box margin="5">
-                  <Text>{prod.title}</Text>
-                  <Text fontWeight="bold" fontSize="1.5rem">
-                    {prod.price}
-                  </Text>
-                </Box>
-              </Box>
-            )
-          })}
+          {mktProducts &&
+            mktProducts.map(prod => {
+              return (
+                <Link key={prod.id} href={`/marketplace/${prod.id}`}>
+                  <Box className={style.third}>
+                    <Image
+                      height="70%"
+                      borderRadius="7px"
+                      src={prod.image}
+                      alt=""
+                      margin="3"
+                      width="90%"
+                    />
+                    <Box margin="5">
+                      <Text>{prod.title}</Text>
+                      <Text fontWeight="bold" fontSize="1.5rem">
+                        {prod.price}
+                      </Text>
+                    </Box>
+                  </Box>
+                </Link>
+              )
+            })}
         </SimpleGrid>
       </Flex>
     </Box>

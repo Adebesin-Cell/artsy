@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FEATURED_PRODUCTS } from 'data/FeaturedProducts'
+import { CART_PRODUCT } from 'data/cart'
 import { useRouter } from 'next/router'
 import {
   GridItem,
@@ -13,6 +14,7 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
+  Text,
 } from '@chakra-ui/react'
 import { GetStaticProps } from 'next'
 import style from '../../styles/Home.module.css'
@@ -57,11 +59,35 @@ export const getStaticProps: GetStaticProps = async context => {
     // props: { product: res },
   }
 }
+export const addTocart = (id: number) => {
+  if (checkDataExist(id)) {
+    window.location.href = '/marketplace/addtocart'
+  } else {
+    let cartProducts = CART_PRODUCT ? CART_PRODUCT : []
+    // cartProducts = CART_PRODUCT
+    console.log(id)
+    const cartData = FEATURED_PRODUCTS.filter(el => el.id === id)
 
-// export default Product
+    console.log(...cartData)
+    cartProducts.push(...cartData)
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
+
+    // push the item into add to cart array
+    window.location.href = '/marketplace/addtocart'
+  }
+}
+export const checkDataExist = (id: number) => {
+  if (CART_PRODUCT) {
+    const check = CART_PRODUCT.filter(el => el.id === id)
+    if (check.length > 0) {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
 function checkout(product: ProductItemProps) {
-  // console.log(product)
-  //then use its value to render, but i cant use the value
   return (
     <Box m="12" justifyContent="center">
       <Flex
@@ -82,7 +108,27 @@ function checkout(product: ProductItemProps) {
         </Box>
         <Box height="100%" width="50%" border="1px solid grey">
           <Box height="15%" width="100%" border="1px solid grey"></Box>
-          <Box height="45%" width="100%" border="1px solid grey"></Box>
+          <Box height="45%" width="100%" border="1px solid grey">
+            <Box height="70%" border="1px solid grey">
+              <Text>Creator</Text>
+              <Text>Creator</Text>
+              <Text>Creator</Text>
+            </Box>
+
+            <Box height="30%" border="1px solid grey" padding="1rem">
+              <Button
+                className={style.addTocartbtn}
+                height="3.5rem"
+                width="14rem"
+                backgroundColor="#3457D5"
+                color="white"
+                borderRadius="0px"
+                onClick={() => addTocart(product.id)}
+              >
+                Add to cart
+              </Button>
+            </Box>
+          </Box>
           <Box
             height="40%"
             width="100%"
