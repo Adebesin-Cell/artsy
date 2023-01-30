@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react'
 // import { MdOutlineCancel } from 'react-icons/ri'
 import ShoppingCart from 'components/cart/ShoppingCart'
+import ShippingDetails from 'components/cart/ShippingDetails'
 // console.log(CART_PRODUCT)
 // i use this to clear local storage
 
@@ -55,7 +56,7 @@ function Addtocart() {
           </TabPanel>
           {/* initially not mounted */}
           <TabPanel>
-            <p>two!</p>
+            <ShippingDetails />
           </TabPanel>
           <TabPanel>
             <p>two!</p>
