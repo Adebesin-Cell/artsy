@@ -109,13 +109,20 @@ function checkout(product: ProductItemProps) {
         <Box height="100%" width="50%" border="1px solid grey">
           <Box height="15%" width="100%" border="1px solid grey"></Box>
           <Box height="45%" width="100%" border="1px solid grey">
-            <Box height="70%" border="1px solid grey">
-              <Text>Creator</Text>
-              <Text>Creator</Text>
-              <Text>Creator</Text>
+            <Box height="70%" padding="1rem">
+              <Text marginBottom="1rem">Creator: Del Ali</Text>
+              <Text marginBottom="1rem">Made in Italy</Text>
+              <Text marginBottom="1rem">Total Views: 1.7k views</Text>
+              <Flex>
+                <Button bg="inherit">-</Button>
+                <Text fontWeight="bold" fontSize="1.5rem">
+                  1
+                </Text>
+                <Button bg="inherit">+</Button>
+              </Flex>
             </Box>
 
-            <Box height="30%" border="1px solid grey" padding="1rem">
+            <Box height="30%" padding="1rem">
               <Button
                 className={style.addTocartbtn}
                 height="3.5rem"

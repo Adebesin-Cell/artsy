@@ -18,6 +18,9 @@ import {
 } from '@chakra-ui/react'
 // import { MdOutlineCancel } from 'react-icons/ri'
 import { BiX } from 'react-icons/bi'
+import style from '../../styles/Home.module.css'
+import Link from 'next/link'
+
 // console.log(CART_PRODUCT)
 // i use this to clear local storage
 
@@ -117,6 +120,85 @@ function ShoppingCart() {
               </Flex>
             )
           })}
+        <Flex height="10rem" width="100%">
+          <Box width="50%" margin="2rem">
+            <Button
+              className={style.addTocartbtn}
+              height="5rem"
+              width="90%"
+              backgroundColor="#3457D5"
+              color="white"
+              borderRadius="0px"
+              marginRight="2rem"
+
+              //   onClick={() => addTocart(product.id)}
+            >
+              <Link href="/marketplace/addtocart/Tab2">
+                Proceed to checkout
+              </Link>
+            </Button>
+          </Box>
+          <Flex height="100%" color="#989898" width="50%">
+            <Box width="70%" height="100%">
+              <Text
+                textAlign="left"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                Product in cart:
+              </Text>
+              <Text
+                textAlign="left"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                Shipping:
+              </Text>
+              <Text
+                textAlign="left"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                Total:
+              </Text>
+            </Box>
+            <Box width="30%" height="100%">
+              <Text
+                textAlign="right"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                {cartProd && cartProd.length} items
+              </Text>
+              <Text
+                textAlign="right"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                $2.50
+              </Text>
+              <Text
+                textAlign="right"
+                marginTop="1rem"
+                fontWeight="Normal"
+                fontSize="1.2rem"
+              >
+                {cartProd &&
+                  cartProd
+                    .reduce((acc, mov) => {
+                      console.log(mov.price)
+                      return acc + Number(mov.price)
+                    }, 0)
+                    .toFixed(2)}
+              </Text>
+            </Box>
+          </Flex>
+        </Flex>
       </SimpleGrid>
       <Button onClick={() => removeData()}>Clear data in Local Storage</Button>
     </Box>

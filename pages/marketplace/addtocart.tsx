@@ -19,6 +19,7 @@ import {
 // import { MdOutlineCancel } from 'react-icons/ri'
 import ShoppingCart from 'components/cart/ShoppingCart'
 import ShippingDetails from 'components/cart/ShippingDetails'
+import PaymentDetails from 'components/cart/PaymentDetails'
 // console.log(CART_PRODUCT)
 // i use this to clear local storage
 
@@ -59,7 +60,7 @@ function Addtocart() {
             <ShippingDetails />
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <PaymentDetails />
           </TabPanel>
         </TabPanels>
       </Tabs>
