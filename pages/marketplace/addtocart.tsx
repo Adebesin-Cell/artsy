@@ -17,9 +17,9 @@ import {
   TabPanel,
 } from '@chakra-ui/react'
 // import { MdOutlineCancel } from 'react-icons/ri'
-import ShoppingCart from 'components/cart/ShoppingCart'
-import ShippingDetails from 'components/cart/ShippingDetails'
-import PaymentDetails from 'components/cart/PaymentDetails'
+import ShoppingCart from 'components/cart/Shoppingcart/ShoppingCart'
+import ShippingDetails from 'components/cart/Shippingdetails/ShippingDetails'
+import PaymentDetails from 'components/cart/Paymentdetail/PaymentDetails'
 // console.log(CART_PRODUCT)
 // i use this to clear local storage
 
