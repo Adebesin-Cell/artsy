@@ -57,7 +57,7 @@ function CartProductSummary(prop: dispProps) {
           fontWeight="Normal"
           fontSize="1.2rem"
         >
-          {CART_PRODUCT.length} items
+          {CART_PRODUCT && CART_PRODUCT.length} items
         </Text>
         <Text
           textAlign="right"
@@ -73,10 +73,11 @@ function CartProductSummary(prop: dispProps) {
           fontWeight="Normal"
           fontSize="1.2rem"
         >
-          {CART_PRODUCT.reduce((acc, mov) => {
-            console.log(mov.price)
-            return acc + Number(mov.price)
-          }, 0).toFixed(2)}
+          {CART_PRODUCT &&
+            CART_PRODUCT.reduce((acc, mov) => {
+              console.log(mov.price)
+              return acc + Number(mov.price)
+            }, 0).toFixed(2)}
         </Text>
       </Box>
     </Flex>
