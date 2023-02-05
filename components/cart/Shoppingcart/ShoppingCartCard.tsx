@@ -71,6 +71,7 @@ function ShoppingCartCard(props: Shoppingcart) {
           border="0.5px solid"
           borderColor="#333333"
           borderRadius="full"
+          transform="scaleY(0.7)scaleX(0.7)"
           // margin="auto"
           float="right"
         >
@@ -79,13 +80,14 @@ function ShoppingCartCard(props: Shoppingcart) {
 
         <Text
           marginTop="8rem"
-          fontWeight="bold"
+          fontWeight="Normal"
           fontSize="1.5rem"
+          fontFamily="Serif"
           // float="right"
           // bg="green"
           textAlign="right"
         >
-          {price}
+          ${price}
         </Text>
       </Box>
     </Flex>

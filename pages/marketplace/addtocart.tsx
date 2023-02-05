@@ -38,7 +38,7 @@ export type FeaturedProduct = {
 function Addtocart() {
   return (
     <Box
-      width="70%"
+      width="65%"
       //   height="100vh"
       //   border="1px solid grey"
       margin="auto"
