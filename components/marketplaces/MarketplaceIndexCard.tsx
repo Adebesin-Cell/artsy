@@ -33,7 +33,7 @@ function MarketplaceIndexCard(props: marketPlace) {
   const { id, image, title, price, description } = props
 
   return (
-    <Link key={id} href={`/marketplace/$id}`}>
+    <Link key={id} href={`/marketplace/${id}`}>
       <Box className={style.third}>
         <Image
           height="70%"

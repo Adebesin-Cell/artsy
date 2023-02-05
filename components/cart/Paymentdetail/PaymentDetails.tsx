@@ -20,6 +20,7 @@ import { useEffect, useState } from 'react'
 import { BiX } from 'react-icons/bi'
 import style from '../../../styles/Home.module.css'
 import PaymentDetailsForm from './PaymentDetailsForm'
+import CartProductSummary from '../CartProductSummary'
 
 function PaymentDetails() {
   return (
@@ -70,63 +71,7 @@ function PaymentDetails() {
             ttttttttttttt
           </Box>
           <Box height="10rem" width="100%">
-            <Flex height="100%" color="#989898">
-              <Box width="70%" height="100%">
-                <Text
-                  textAlign="left"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  Product in cart:
-                </Text>
-                <Text
-                  textAlign="left"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  Shipping:
-                </Text>
-                <Text
-                  textAlign="left"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  Total:
-                </Text>
-              </Box>
-              <Box width="30%" height="100%">
-                <Text
-                  textAlign="right"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  {CART_PRODUCT.length} items
-                </Text>
-                <Text
-                  textAlign="right"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  $2.50
-                </Text>
-                <Text
-                  textAlign="right"
-                  marginTop="1rem"
-                  fontWeight="Normal"
-                  fontSize="1.2rem"
-                >
-                  {CART_PRODUCT.reduce((acc, mov) => {
-                    console.log(mov.price)
-                    return acc + Number(mov.price)
-                  }, 0).toFixed(2)}
-                </Text>
-              </Box>
-            </Flex>
+            <CartProductSummary hei="100%" wid={''} />
           </Box>
         </SimpleGrid>
       </Flex>
