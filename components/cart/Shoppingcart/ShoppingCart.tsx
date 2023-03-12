@@ -44,7 +44,7 @@ function ShoppingCart() {
 
   useEffect(() => {
     setcartProd(CART_PRODUCT)
-    console.log(cartProd)
+    // console.log(cartProd)
   }, [])
 
   const removeData = () => {

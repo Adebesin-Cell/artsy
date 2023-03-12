@@ -23,11 +23,11 @@ function Auction() {
   // const heartref = React.LegacyRef<SVGSVGElement>
 
   const doLike = () => {
-    useEffect(() => {
-      console.log('hello')
-      heartref.current?.classList.toggle('addlike')
-      console.log(heartref)
-    }, [])
+    // useEffect(() => {
+    //   console.log('hello')
+    //   heartref.current?.classList.toggle('addlike')
+    //   console.log(heartref)
+    // }, [])
   }
 
   return (
@@ -62,7 +62,7 @@ function Auction() {
         fontWeight="Bold"
         // marginTop="6rem"
       >
-        Here's an overview of product actively on auction, explore!
+        Here&apos;s an overview of product actively on auction, explore!
       </Text>
       <Flex
         // mt="20"
