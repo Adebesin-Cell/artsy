@@ -35,7 +35,12 @@ const Navbar = () => {
           <Icon w={5} h={5} as={RiSearchLine} />
         </IconButton>
         <IconButton aria-label="Cart" variant="unstyled">
-          <Icon w={5} h={5} as={RiShoppingCartLine} />
+          <Icon
+            w={5}
+            h={5}
+            as={RiShoppingCartLine}
+            onClick={() => (window.location.href = '/marketplace/addtocart')}
+          />
         </IconButton>
         <IconButton aria-label="Notifications" variant="unstyled">
           <Icon w={5} h={5} as={RiNotification2Line} />

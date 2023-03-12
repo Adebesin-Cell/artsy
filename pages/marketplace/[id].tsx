@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async context => {
     // props: { product: res },
   }
 }
-export const addTocart = (id: number) => {
+const addTocart = (id: number) => {
   if (checkDataExist(id)) {
     window.location.href = '/marketplace/addtocart'
   } else {
@@ -70,13 +70,14 @@ export const addTocart = (id: number) => {
 
     console.log(...cartData)
     cartProducts.push(...cartData)
+
     localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
 
     // push the item into add to cart array
     window.location.href = '/marketplace/addtocart'
   }
 }
-export const checkDataExist = (id: number) => {
+const checkDataExist = (id: number) => {
   if (CART_PRODUCT) {
     const check = CART_PRODUCT.filter(el => el.id === id)
     if (check.length > 0) {

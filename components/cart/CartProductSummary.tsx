@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CART_PRODUCT } from 'data/cart'
 import {
   Button,
@@ -19,9 +19,25 @@ export type dispProps = {
   wid: string
   hei: string
 }
+export type FeaturedProduct = {
+  id: number
+  image: string
+  title: string
+  price: string
+  category: string
+  description: string
+  creators: { id: number; image: string }[]
+  totalCreators: number
+  placeImageRight?: boolean
+}
 
 function CartProductSummary(prop: dispProps) {
+  const [cartProd, setcartProd] = useState<FeaturedProduct[] | null>(null)
   const { wid, hei } = prop
+  useEffect(() => {
+    setcartProd(CART_PRODUCT)
+  }, [])
+
   return (
     <Flex height={hei} color="#989898" width={wid}>
       <Box width="70%" height="100%">
@@ -57,7 +73,7 @@ function CartProductSummary(prop: dispProps) {
           fontWeight="Normal"
           fontSize="1.2rem"
         >
-          {CART_PRODUCT && CART_PRODUCT.length} items
+          {cartProd && cartProd.length} items
         </Text>
         <Text
           textAlign="right"
@@ -65,7 +81,15 @@ function CartProductSummary(prop: dispProps) {
           fontWeight="Normal"
           fontSize="1.2rem"
         >
-          $2.50
+          $
+          {cartProd
+            ? cartProd
+                .reduce((acc, mov) => {
+                  // console.log(mov.price)
+                  return acc + Number(mov.price) * 0.15
+                }, 0)
+                .toFixed(2)
+            : 0}
         </Text>
         <Text
           textAlign="right"
@@ -73,11 +97,13 @@ function CartProductSummary(prop: dispProps) {
           fontWeight="Normal"
           fontSize="1.2rem"
         >
-          {CART_PRODUCT &&
-            CART_PRODUCT.reduce((acc, mov) => {
-              console.log(mov.price)
-              return acc + Number(mov.price)
-            }, 0).toFixed(2)}
+          {cartProd &&
+            cartProd
+              .reduce((acc, mov) => {
+                // console.log(mov.price)
+                return acc + Number(mov.price)
+              }, 0)
+              .toFixed(2)}
         </Text>
       </Box>
     </Flex>

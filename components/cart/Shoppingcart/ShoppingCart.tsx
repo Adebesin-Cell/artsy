@@ -23,7 +23,7 @@ import Link from 'next/link'
 import ShoppingCartCard from './ShoppingCartCard'
 import CartProductSummary from '../CartProductSummary'
 
-// console.log(CART_PRODUCT)
+console.log(CART_PRODUCT)
 // i use this to clear local storage
 
 export type FeaturedProduct = {
@@ -44,10 +44,12 @@ function ShoppingCart() {
 
   useEffect(() => {
     setcartProd(CART_PRODUCT)
+    console.log(cartProd)
   }, [])
 
   const removeData = () => {
     localStorage.removeItem('cartProducts')
+    window.location.href = '/marketplace/addtocart'
   }
   return (
     <Box mt="3rem">
@@ -97,7 +99,7 @@ function ShoppingCart() {
           <CartProductSummary wid="50%" hei="100" />
         </Flex>
       </SimpleGrid>
-      <Button onClick={() => removeData()}>Clear data in Local Storage</Button>
+      {/* <Button onClick={() => removeData()}>Clear data in Local Storage</Button> */}
     </Box>
   )
 }
