@@ -41,8 +41,8 @@ function Auction() {
         height="5rem"
         width="100%"
         // border="1px solid grey"
-        marginBottom="2rem"
-        padding="2rem 2rem 2rem 0rem"
+        marginBottom="0.5rem"
+        padding="0rem 2rem 2rem 0rem"
       >
         <Breadcrumb fontSize="1.1rem" fontWeight="Bold">
           <BreadcrumbItem>
@@ -235,6 +235,7 @@ function Auction() {
             </IconButton>
             <Image
               height="60%"
+              width="100%"
               src="./images/auction_img/fall_apart.PNG"
               alt=""
             />
