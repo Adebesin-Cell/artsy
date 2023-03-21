@@ -102,7 +102,7 @@ function Auction() {
         paddingTop="3rem"
       >
         {AUCTION_ITEM.map((aucitem, i) => (
-          <Link href={'/auctions/' + aucitem.id}>
+          <Link key={aucitem.id} href={'/auctions/' + aucitem.id}>
             {' '}
             <Box
               background="rgba(0, 0, 0, 0.7)"
