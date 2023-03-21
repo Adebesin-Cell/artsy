@@ -46,8 +46,8 @@ function Addtocart() {
     >
       <Tabs isFitted align="center" mt="3rem" isLazy>
         <TabList width="40rem">
-          <Tab>Shopping Cart</Tab>
-          <Tab>Shipping Details</Tab>
+          <Tab aria-selected={false}>Shopping Cart</Tab>
+          <Tab aria-selected={true}>Shipping Details</Tab>
           <Tab>Payment Details</Tab>
         </TabList>
         <TabPanels>

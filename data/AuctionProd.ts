@@ -17,15 +17,15 @@ export const AUCTION_ITEM: auctionitem[] = [
     image: './images/featured--1.png',
   },
   {
-    id: 1,
-    image: './images/featured--1.png',
-  },
-  {
     id: 4,
     image: './images/featured--1.png',
   },
   {
     id: 5,
+    image: './images/featured--1.png',
+  },
+  {
+    id: 6,
     image: './images/featured--1.png',
   },
 ]

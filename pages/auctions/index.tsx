@@ -10,24 +10,52 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
+  Link,
 } from '@chakra-ui/react'
 import { BsHeart } from 'react-icons/bs'
 import { RiHeart3Fill } from 'react-icons/ri'
 import { AUCTION_ITEM } from 'data/AuctionProd'
+import { RiArrowRightLine } from 'react-icons/ri'
 
 typeof window !== 'undefined' && console.log(window.location)
 
 function Auction() {
-  const heartref = useRef<SVGSVGElement>(null)
+  const heartref1 = useRef<HTMLButtonElement>(null)
+  const heartref2 = useRef<HTMLButtonElement>(null)
+  const auctext = useRef<(HTMLDivElement | null)[]>([])
+  const aucref = useRef<(HTMLDivElement | null)[]>([])
+  auctext.current = []
+  aucref.current = []
   // useEffect(() => {
   // const heartref = React.LegacyRef<SVGSVGElement>
 
-  const doLike = () => {
+  const addShowdarktheme = (el: HTMLDivElement) => {
+    if (el && !aucref.current.includes(el)) {
+      aucref.current.push(el)
+    }
+  }
+  const addauctext = (el: HTMLDivElement) => {
+    if (el && !auctext.current.includes(el)) {
+      auctext.current.push(el)
+    }
+  }
+  const doLike = (val: number) => {
     // useEffect(() => {
-    //   console.log('hello')
-    //   heartref.current?.classList.toggle('addlike')
-    //   console.log(heartref)
+    console.log('hello')
+    if (val === 1) {
+      heartref1.current?.classList.toggle('addlike')
+    }
+    if (val === 2) {
+      heartref2.current?.classList.toggle('addlike')
+    }
+
+    // console.log(heartref)
     // }, [])
+  }
+  const Showdarktheme = (i: number) => {
+    aucref.current[i]?.classList.toggle('overlaydark')
+    auctext.current[i]?.classList.toggle('hidden')
+    // console.log(aucref.current)
   }
 
   return (
@@ -46,7 +74,7 @@ function Auction() {
       >
         <Breadcrumb fontSize="1.1rem" fontWeight="Bold">
           <BreadcrumbItem>
-            <BreadcrumbLink opacity="0.5" href="/">
+            <BreadcrumbLink opacity="0.5" href="/auctions">
               Home
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -73,22 +101,90 @@ function Auction() {
         w="57rem"
         paddingTop="3rem"
       >
-        {AUCTION_ITEM.map(aucitem => (
-          <Box
-            _hover={{
-              transform: 'scaleX(0.8)scaleY(0.8)',
-              transition: '0.4s',
-            }}
-            key={aucitem.id}
-            height="20rem"
-            minWidth="20rem"
-            // border="1px solid grey"
-            borderRadius="0.6rem"
-            bgImage={aucitem.image}
-          >
-            {/* BBBBBBBBBBBB */}
-            {/* <Image height="80%" src="./images/featured--1.png" alt="" /> */}
-          </Box>
+        {AUCTION_ITEM.map((aucitem, i) => (
+          <Link href={'/auctions/' + aucitem.id}>
+            {' '}
+            <Box
+              background="rgba(0, 0, 0, 0.7)"
+              _hover={{
+                transform: 'scaleX(0.8)scaleY(0.8)',
+                transition: '0.4s',
+
+                // bgImage: 'inherit',
+              }}
+              key={aucitem.id}
+              height="20rem"
+              minWidth="20rem"
+              // border="1px solid grey"
+              borderRadius="0.6rem"
+              bgImage={aucitem.image}
+              position="relative"
+              textAlign="center"
+              onMouseEnter={() => Showdarktheme(i)}
+              onMouseLeave={() => Showdarktheme(i)}
+            >
+              <Box
+                height="100%"
+                width="100%"
+                borderRadius="0.6rem"
+                // background="rgba(0, 0, 0, 0.7)"
+                // className="overlaydark"
+
+                ref={addShowdarktheme}
+              >
+                {/* BBBBBBBBBBBB */}
+                {/* <Image height="80%" src="./images/featured--1.png" alt="" /> */}
+                <Flex
+                  position="absolute"
+                  top="20"
+                  color="white"
+                  // border="1px solid white"
+                  gap={3}
+                  right="0"
+                  left="0"
+                  justifyContent="center"
+                  className="hidden"
+                  ref={addauctext}
+                >
+                  <Text fontSize="1.7rem" marginTop="0.5rem">
+                    Join livestream
+                  </Text>
+                  <IconButton
+                    aria-label="Notifications"
+                    variant="unstyled"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    w="16"
+                    h="16"
+                    border="0.5px solid"
+                    // borderColor="#333333"
+                    borderRadius="full"
+                  >
+                    <Icon as={RiArrowRightLine} w={10} h={6} />
+                  </IconButton>
+                </Flex>
+                <Box
+                  width="85%"
+                  height="20%"
+                  bgColor="white"
+                  position="absolute"
+                  bottom="8"
+                  margin="auto"
+                  right="0"
+                  left="0"
+                  borderBottom="1px solid white"
+                  borderLeft="1px solid white"
+                  // opacity="0.4"
+                  borderRadius="5px"
+                  // background="rgba(255,255,255,.5)"
+                  background="rgba(255, 255, 255, 0.299)"
+                >
+                  <Text color="white">6hr: 40mins: 15s</Text>
+                </Box>
+              </Box>
+            </Box>
+          </Link>
         ))}
       </Flex>
       <Text
@@ -131,14 +227,16 @@ function Auction() {
               // transform="scaleY(0.7)scaleX(0.7)"
               // margin="auto"
               float="right"
-              onClick={() => doLike()}
+              // className="addlike"
+              ref={heartref2}
+              onClick={() => doLike(2)}
             >
               <Icon
                 color="red"
                 as={RiHeart3Fill}
                 w={8}
                 h={8}
-                ref={heartref}
+
                 // className="addlike"
               />
             </IconButton>
@@ -222,14 +320,15 @@ function Auction() {
               // transform="scaleY(0.7)scaleX(0.7)"
               // margin="auto"
               float="right"
-              onClick={() => doLike()}
+              ref={heartref1}
+              onClick={() => doLike(1)}
             >
               <Icon
                 color="red"
                 as={RiHeart3Fill}
                 w={8}
                 h={8}
-                ref={heartref}
+
                 // className="addlike"
               />
             </IconButton>
