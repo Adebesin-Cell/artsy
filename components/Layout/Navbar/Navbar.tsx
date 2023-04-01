@@ -1,4 +1,5 @@
 import { Box, Flex, Icon, IconButton, Image, Link } from '@chakra-ui/react'
+
 import { NAV_ITEMS } from 'data/NavItemData'
 import NavItem from './NavItem'
 import {

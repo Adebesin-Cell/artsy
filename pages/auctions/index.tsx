@@ -16,6 +16,7 @@ import { BsHeart } from 'react-icons/bs'
 import { RiHeart3Fill } from 'react-icons/ri'
 import { AUCTION_ITEM } from 'data/AuctionProd'
 import { RiArrowRightLine } from 'react-icons/ri'
+import Livebid from 'components/Auction/Livebid'
 
 typeof window !== 'undefined' && console.log(window.location)
 
@@ -103,12 +104,11 @@ function Auction() {
       >
         {AUCTION_ITEM.map((aucitem, i) => (
           <Link key={aucitem.id} href={'/auctions/' + aucitem.id}>
-            {' '}
             <Box
               background="rgba(0, 0, 0, 0.7)"
               _hover={{
                 transform: 'scaleX(0.8)scaleY(0.8)',
-                transition: '0.4s',
+                // transition: '0.4s',
 
                 // bgImage: 'inherit',
               }}
@@ -136,7 +136,7 @@ function Auction() {
                 {/* <Image height="80%" src="./images/featured--1.png" alt="" /> */}
                 <Flex
                   position="absolute"
-                  top="20"
+                  top="6.5rem"
                   color="white"
                   // border="1px solid white"
                   gap={3}
@@ -165,8 +165,8 @@ function Auction() {
                   </IconButton>
                 </Flex>
                 <Box
-                  width="85%"
-                  height="20%"
+                  width="82%"
+                  height="18%"
                   bgColor="white"
                   position="absolute"
                   bottom="8"
@@ -180,7 +180,9 @@ function Auction() {
                   // background="rgba(255,255,255,.5)"
                   background="rgba(255, 255, 255, 0.299)"
                 >
-                  <Text color="white">6hr: 40mins: 15s</Text>
+                  <Text color="white" fontSize="1.7rem" marginTop="0.3rem">
+                    6hr: 40mins: 15s
+                  </Text>
                 </Box>
               </Box>
             </Box>
