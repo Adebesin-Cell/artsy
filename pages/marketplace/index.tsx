@@ -20,37 +20,37 @@ import {
   Input,
 } from '@chakra-ui/react'
 import { FEATURED_PRODUCTS } from 'data/FeaturedProducts'
+import { MARKET_ITEM } from 'data/MarketItem'
 import Link from 'next/link'
 import style from '../../styles/Home.module.css'
 import { useState, useEffect } from 'react'
 import FeaturedProducts from 'components/Landing/Products'
 import MarketplaceIndexCard from 'components/marketplaces/MarketplaceIndexCard'
 import TopFilter from 'components/marketplaces/TopFilter'
+import { MarketItem } from 'data/MarketItem'
 
-// let M_Products = FEATURED_PRODUCTS
-export type FeaturedProduct = {
-  id: number
-  image: string
-  title: string
-  price: string
-  category: string
-  description: string
-  creators: { id: number; image: string }[]
-  totalCreators: number
-  placeImageRight?: boolean
-}
+// let M_Products = MARKET_ITEM
+// export type FeaturedProduct = {
+//   id: number
+//   image: string
+//   title: string
+//   price: string
+//   category: string
+//   description: string
+
+// }
 
 export type valueT = {
   value: string
 }
 function Marketplace() {
-  const [mktProducts, setmktProducts] = useState<FeaturedProduct[] | null>(null)
+  const [mktProducts, setmktProducts] = useState<MarketItem[] | null>(null)
   const [checkedItems, setcheckedItems] = useState([''])
-  const filteredProduct: FeaturedProduct[] = []
+  const filteredProduct: MarketItem[] = []
 
   // This hook sets products on page load
   useEffect(() => {
-    setmktProducts(FEATURED_PRODUCTS)
+    setmktProducts(MARKET_ITEM)
     setcheckedItems([])
     // setfilteredProduct([])
   }, [])
@@ -67,11 +67,11 @@ function Marketplace() {
     // console.log(checkedItems)
     // console.log(checkedItems.length)
     if (checkedItems.length < 1) {
-      setmktProducts(FEATURED_PRODUCTS)
+      setmktProducts(MARKET_ITEM)
     } else {
       // setfilteredProduct([])
       checkedItems.forEach(item => {
-        const M_Products = FEATURED_PRODUCTS.filter(el => el.category === item)
+        const M_Products = MARKET_ITEM.filter(el => el.category === item)
 
         filteredProduct.push(...M_Products)
         console.log(filteredProduct)
