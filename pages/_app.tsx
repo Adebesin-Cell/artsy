@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import Layout from 'components/Layout/Layout/Layout'
+import '../styles/globals.css'
 
 type ArtsyAppProp = Omit<AppProps, 'Component'> & {
   Component: AppProps['Component'] & { noFooter?: boolean }
